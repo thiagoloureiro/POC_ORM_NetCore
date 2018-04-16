@@ -1,5 +1,6 @@
 ﻿using System.Data.SqlClient;
 using Data.Base;
+using Model;
 
 namespace Data.ADO
 {
@@ -18,6 +19,22 @@ namespace Data.ADO
                 };
 
                 mapper.ReadMultiple(command);
+            }
+        }
+
+        public Messages[] GetAllMessages()
+        {
+            var mapper = new MessageMapper();
+            using (var con = new SqlConnection(Connstring))
+            {
+                con.Open();
+                var command = new SqlCommand
+                {
+                    CommandText = @"select * from messages",
+                    Connection = con
+                };
+
+                return mapper.ReadMultiple(command);
             }
         }
     }
