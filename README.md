@@ -7,6 +7,7 @@ Initializing Tests
 Test Number 1: SELECT * FROM Messages
 -------------------------------------
 Dapper
+
 1999ms
 2115ms
 2262ms
@@ -14,6 +15,7 @@ Dapper
 2026ms
 Average: 2094.6
 ADO
+
 2344ms
 2046ms
 2106ms
@@ -21,6 +23,7 @@ ADO
 1978ms
 Average: 2054.6
 EntityFramework
+
 6841ms
 6179ms
 6051ms
