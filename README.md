@@ -3,6 +3,7 @@
 Repository with Examples and Performance tests with .NET Core 2.0 and EntityFramework Core, Dapper and ADO with AutoMapper.
 
 # Test Example: 
+
 Initializing Tests
 Test Number 1: SELECT * FROM Messages
 -------------------------------------
