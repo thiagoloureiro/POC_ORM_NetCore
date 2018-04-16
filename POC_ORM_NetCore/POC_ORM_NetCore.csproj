@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Data.ADO\Data.ADO.csproj" />
+    <ProjectReference Include="..\Data.Dapper\Data.Dapper.csproj" />
+    <ProjectReference Include="..\Data.EntityFramework\Data.EntityFramework.csproj" />
+    <ProjectReference Include="..\Model\Model.csproj" />
+  </ItemGroup>
+
+</Project>
