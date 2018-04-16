@@ -3,17 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27428.2037
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "POC_ORM_NetCore", "POC_ORM_NetCore\POC_ORM_NetCore.csproj", "{0B10CF70-731B-489E-9511-38FEA98CD561}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "POC_ORM_NetCore", "src\POC_ORM_NetCore\POC_ORM_NetCore.csproj", "{0B10CF70-731B-489E-9511-38FEA98CD561}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data.Dapper", "Data.Dapper\Data.Dapper.csproj", "{8DE502BD-B5C6-4652-8B17-1C7D845F1518}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data.Dapper", "src\Data.Dapper\Data.Dapper.csproj", "{8DE502BD-B5C6-4652-8B17-1C7D845F1518}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data.EntityFramework", "Data.EntityFramework\Data.EntityFramework.csproj", "{C7BB7046-0C69-4913-9C1C-9787B2355A51}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data.EntityFramework", "src\Data.EntityFramework\Data.EntityFramework.csproj", "{C7BB7046-0C69-4913-9C1C-9787B2355A51}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data.ADO", "Data.ADO\Data.ADO.csproj", "{50D9E1FB-9C5A-4040-B2E7-5D2DCCD6B475}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data.ADO", "src\Data.ADO\Data.ADO.csproj", "{50D9E1FB-9C5A-4040-B2E7-5D2DCCD6B475}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model", "Model\Model.csproj", "{51D0E17A-0414-4CAB-8890-7D2BA7F34C7D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model", "src\Model\Model.csproj", "{51D0E17A-0414-4CAB-8890-7D2BA7F34C7D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data.Base", "Data.Base\Data.Base.csproj", "{908EDB02-EB96-4121-95EF-DACC33424B14}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data.Base", "src\Data.Base\Data.Base.csproj", "{908EDB02-EB96-4121-95EF-DACC33424B14}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
