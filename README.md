@@ -2,11 +2,11 @@
 
 Repository with Examples and Performance tests with .NET Core 2.0 and EntityFramework Core, Dapper and ADO with AutoMapper.
 
-Test Example: 
+# Test Example: 
 Initializing Tests
 Test Number 1: SELECT * FROM Messages
 -------------------------------------
-Dapper
+## Dapper
 
 1999ms
 
@@ -20,7 +20,7 @@ Dapper
 
 Average: 2094.6
 
-ADO
+## ADO
 
 2344ms
 
@@ -34,11 +34,16 @@ ADO
 
 Average: 2054.6
 
-EntityFramework
+## EntityFramework
 
 6841ms
+
 6179ms
+
 6051ms
+
 7061ms
+
 5716ms
+
 Average: 6369.6
