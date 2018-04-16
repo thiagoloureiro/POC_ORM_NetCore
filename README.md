@@ -9,19 +9,31 @@ Test Number 1: SELECT * FROM Messages
 Dapper
 
 1999ms
+
 2115ms
+
 2262ms
+
 2071ms
+
 2026ms
+
 Average: 2094.6
+
 ADO
 
 2344ms
+
 2046ms
+
 2106ms
+
 1799ms
+
 1978ms
+
 Average: 2054.6
+
 EntityFramework
 
 6841ms
