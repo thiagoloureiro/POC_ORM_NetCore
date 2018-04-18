@@ -1,6 +1,6 @@
-﻿using System.Data.SqlClient;
-using Data.Base;
+﻿using Data.Base;
 using Model;
+using System.Data.SqlClient;
 
 namespace Data.ADO
 {
