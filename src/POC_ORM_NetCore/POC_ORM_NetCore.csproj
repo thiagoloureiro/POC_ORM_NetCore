@@ -9,6 +9,7 @@
     <ProjectReference Include="..\Data.ADO\Data.ADO.csproj" />
     <ProjectReference Include="..\Data.Dapper\Data.Dapper.csproj" />
     <ProjectReference Include="..\Data.EntityFramework\Data.EntityFramework.csproj" />
+    <ProjectReference Include="..\Data.NHibernate\Data.NHibernate.csproj" />
     <ProjectReference Include="..\Model\Model.csproj" />
   </ItemGroup>
 

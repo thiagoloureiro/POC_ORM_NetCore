@@ -26,6 +26,9 @@ namespace POC_ORM_NetCore
             Console.WriteLine("EntityFramework");
             StartTestEf();
 
+            Console.WriteLine("NHibernate");
+            StartTestNHibernate();
+
             Console.ReadKey();
         }
 
@@ -98,6 +101,28 @@ namespace POC_ORM_NetCore
                     sw.Reset();
                 }
             }
+            Console.WriteLine($"Average: {_results.Average()}");
+        }
+
+        private static void StartTestNHibernate()
+        {
+            var objNH = new Data.NHibernate.MessageRepository();
+            sw = new Stopwatch();
+
+            // objDapper.WarmUp();
+
+            _results = new List<long>();
+
+            for (int i = 0; i < 5; i++)
+            {
+                sw.Start();
+                var ret = objNH.GetAllMessages();
+                sw.Stop();
+                _results.Add(sw.ElapsedMilliseconds);
+                Console.WriteLine(sw.ElapsedMilliseconds + "ms");
+                sw.Reset();
+            }
+
             Console.WriteLine($"Average: {_results.Average()}");
         }
     }
