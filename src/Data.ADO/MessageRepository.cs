@@ -33,7 +33,6 @@ namespace Data.ADO
                     CommandText = @"select * from messages",
                     Connection = con
                 };
-
                 return mapper.ReadMultiple(command);
             }
         }
