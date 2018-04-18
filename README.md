@@ -1,7 +1,7 @@
 
 # POC_ORM_NetCore
 
-Repository with Examples and Performance tests with .NET Core 2.0 and EntityFramework Core, Dapper and ADO with AutoMapper.
+Repository with Examples and Performance tests with .NET Core 2.0 and EntityFramework Core, Dapper, NHibernate and ADO with AutoMapper.
 
 # Test Example: 
 
