@@ -23,7 +23,7 @@ namespace Data.NHibernate
             var sefact = cfg.BuildSessionFactory();
 
             IList<Messages> messages;
-            // TODO Need work
+
             using (var session = sefact.OpenSession())
             {
                 using (var tx = session.BeginTransaction())

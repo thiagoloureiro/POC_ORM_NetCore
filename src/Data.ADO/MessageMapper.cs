@@ -9,9 +9,8 @@ namespace Data.ADO
         {
             return new Messages
             {
-                Id = reader.GetGuid(0),
-                Text = reader.IsDBNull(1) ? null : reader.GetString(1),
-                DtRegister = reader.GetDateTime(2),
+                Id = reader.GetInt32(0),
+                Message = reader.IsDBNull(1) ? null : reader.GetString(1)
             };
         }
     }

@@ -106,17 +106,15 @@ namespace POC_ORM_NetCore
 
         private static void StartTestNHibernate()
         {
-            var objNH = new Data.NHibernate.MessageRepository();
+            var objNh = new Data.NHibernate.MessageRepository();
             sw = new Stopwatch();
-
-            // objDapper.WarmUp();
 
             _results = new List<long>();
 
             for (int i = 0; i < 5; i++)
             {
                 sw.Start();
-                var ret = objNH.GetAllMessages();
+                var ret = objNh.GetAllMessages();
                 sw.Stop();
                 _results.Add(sw.ElapsedMilliseconds);
                 Console.WriteLine(sw.ElapsedMilliseconds + "ms");
