@@ -4,9 +4,9 @@
 Repository with Examples and Performance tests with .NET Core 2.0 and EntityFramework Core, Dapper, NHibernate and ADO with AutoMapper.
 
 Versions Used:
-- Dapper 1.50.4
-- EntityFramework Core 2.0.2
-- NHibernate 5.1.1
+- Dapper 1.50.5
+- EntityFramework Core 2.1.0
+- NHibernate 5.1.3
 
 # Test Example: 
 
