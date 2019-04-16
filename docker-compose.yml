@@ -1,0 +1,15 @@
+version: '3.4'
+
+services:
+  poc_orm_netcore:
+    image: ${DOCKER_REGISTRY-}pocormnetcore
+    build:
+      context: .
+      dockerfile: src/POC_ORM_NetCore/Dockerfile
+  sqlserver:
+    image: microsoft/mssql-server-linux
+    ports:
+      - "1434:1433"
+    environment:
+      - SA_PASSWORD=@Passw0rd
+      - ACCEPT_EULA=Y

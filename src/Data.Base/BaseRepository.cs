@@ -2,6 +2,6 @@
 {
     public abstract class BaseRepository
     {
-        public string Connstring = "Data Source=localhost; Initial Catalog=POCDb; Integrated Security=SSPI;";
+        public string Connstring = "Data Source=sqlserver; Initial Catalog=POCDb; User Id=sa;Password=@Passw0rd;";
     }
 }
