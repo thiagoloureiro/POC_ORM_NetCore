@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using Data.Base;
 
 namespace POC_ORM_NetCore
 {
@@ -13,15 +14,18 @@ namespace POC_ORM_NetCore
 
         private static void Main(string[] args)
         {
+            Console.WriteLine("Creating Database");
+            new Migrations().CreateTables();
+
             Console.WriteLine("Initializing Tests");
-            Console.WriteLine("Test Number 1: SELECT * FROM Messages");
+            Console.WriteLine("Test Number 1: SELECT * FROM Person");
             Console.WriteLine("-------------------------------------");
 
             Console.WriteLine("Dapper");
             StartTestDapper();
 
-            Console.WriteLine("ADO");
-            StartTestAdo();
+            //Console.WriteLine("ADO");s
+            //StartTestAdo();
 
             Console.WriteLine("EntityFramework");
             StartTestEf();
@@ -34,7 +38,7 @@ namespace POC_ORM_NetCore
 
         private static void StartTestDapper()
         {
-            var objDapper = new Data.Dapper.MessageRepository();
+            var objDapper = new Data.Dapper.PersonRepository();
             sw = new Stopwatch();
 
             objDapper.WarmUp();
@@ -44,7 +48,7 @@ namespace POC_ORM_NetCore
             for (int i = 0; i < 5; i++)
             {
                 sw.Start();
-                var ret = objDapper.GetAllMessages();
+                var ret = objDapper.GetAllPerson();
                 sw.Stop();
                 _results.Add(sw.ElapsedMilliseconds);
                 Console.WriteLine(sw.ElapsedMilliseconds + "ms");
@@ -56,7 +60,7 @@ namespace POC_ORM_NetCore
 
         private static void StartTestAdo()
         {
-            var objAdo = new Data.ADO.MessageRepository();
+            var objAdo = new Data.ADO.PersonRepository();
             sw = new Stopwatch();
 
             objAdo.WarmUp();
@@ -66,7 +70,7 @@ namespace POC_ORM_NetCore
             for (int i = 0; i < 5; i++)
             {
                 sw.Start();
-                var ret = objAdo.GetAllMessages();
+                var ret = objAdo.GetAllPerson();
                 sw.Stop();
                 _results.Add(sw.ElapsedMilliseconds);
                 Console.WriteLine(sw.ElapsedMilliseconds + "ms");
@@ -85,7 +89,7 @@ namespace POC_ORM_NetCore
 
             using (var context = new DataContext())
             {
-                context.Messages.FirstOrDefault();
+                context.Person.FirstOrDefault();
             }
 
             for (int i = 0; i < 5; i++)
@@ -94,7 +98,7 @@ namespace POC_ORM_NetCore
 
                 using (var context = new DataContext())
                 {
-                    var ret = context.Messages.ToArray();
+                    var ret = context.Person.ToArray();
                     sw.Stop();
                     _results.Add(sw.ElapsedMilliseconds);
                     Console.WriteLine(sw.ElapsedMilliseconds + "ms");
@@ -106,7 +110,7 @@ namespace POC_ORM_NetCore
 
         private static void StartTestNHibernate()
         {
-            var objNh = new Data.NHibernate.MessageRepository();
+            var objNh = new Data.NHibernate.PersonRepository();
             sw = new Stopwatch();
 
             _results = new List<long>();
@@ -114,7 +118,7 @@ namespace POC_ORM_NetCore
             for (int i = 0; i < 5; i++)
             {
                 sw.Start();
-                var ret = objNh.GetAllMessages();
+                var ret = objNh.GetAllPerson();
                 sw.Stop();
                 _results.Add(sw.ElapsedMilliseconds);
                 Console.WriteLine(sw.ElapsedMilliseconds + "ms");

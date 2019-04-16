@@ -20,5 +20,7 @@ RUN dotnet publish "POC_ORM_NetCore.csproj" -c Release -o /app
 
 FROM base AS final
 WORKDIR /app
+COPY wait-for-it.sh /wait-for-it.sh
+RUN chmod +x /wait-for-it.sh
 COPY --from=publish /app .
 ENTRYPOINT ["dotnet", "POC_ORM_NetCore.dll"]

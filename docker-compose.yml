@@ -6,6 +6,7 @@ services:
     build:
       context: .
       dockerfile: src/POC_ORM_NetCore/Dockerfile
+    entrypoint: ["/wait-for-it.sh", "sqlserver:1434", "--", "dotnet", "POC_ORM_NetCore.dll"]
   sqlserver:
     image: microsoft/mssql-server-linux
     ports:
