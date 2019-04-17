@@ -1,29 +1,31 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace Model
 {
     public class Person
     {
-        public string _id { get; set; }
-        public int index { get; set; }
-        public Guid guid { get; set; }
-        public bool isActive { get; set; }
-        public string balance { get; set; }
-        public string picture { get; set; }
-        public int age { get; set; }
-        public string eyeColor { get; set; }
-        public string name { get; set; }
-        public string gender { get; set; }
-        public string company { get; set; }
-        public string email { get; set; }
-        public string phone { get; set; }
-        public string address { get; set; }
-        public string about { get; set; }
-        public string registered { get; set; }
-        public double latitude { get; set; }
-        public double longitude { get; set; }
-        public string tags { get; set; }
-        public string greeting { get; set; }
-        public string favoriteFruit { get; set; }
+        [Key]
+        public virtual string _id { get; set; }
+
+        public virtual int index { get; set; }
+        public virtual Guid guid { get; set; }
+        public virtual bool isActive { get; set; }
+        public virtual string balance { get; set; }
+        public virtual string picture { get; set; }
+        public virtual int age { get; set; }
+        public virtual string eyeColor { get; set; }
+        public virtual string name { get; set; }
+        public virtual string gender { get; set; }
+        public virtual string company { get; set; }
+        public virtual string email { get; set; }
+        public virtual string phone { get; set; }
+        public virtual string address { get; set; }
+        public virtual string about { get; set; }
+        public virtual string registered { get; set; }
+        public virtual double latitude { get; set; }
+        public virtual double longitude { get; set; }
+        public virtual string greeting { get; set; }
+        public virtual string favoriteFruit { get; set; }
     }
 }

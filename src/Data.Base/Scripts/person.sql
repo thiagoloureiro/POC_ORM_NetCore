@@ -1,4 +1,9 @@
-﻿IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='Person')
+﻿IF EXISTS (SELECT * FROM sysobjects WHERE name='Person')
+BEGIN
+	DROP TABLE [POCDb].[dbo].[Person]
+END
+
+IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='Person')
 BEGIN
 	CREATE TABLE [POCDb].[dbo].[Person]
 	(
@@ -21,8 +26,12 @@ BEGIN
 	registered VARCHAR(100),
 	latitude FLOAT,
 	longitude                   FLOAT,
-	tags VARCHAR(1000),
+	[tags] VARCHAR(1000),
 	greeting VARCHAR(1000),
-	favoriteFruit VARCHAR(1000)
+	favoriteFruit VARCHAR(1000),
+	 CONSTRAINT [PK_Person] PRIMARY KEY CLUSTERED 
+(
+	[_id] ASC
+)
 	)ON[PRIMARY]
 END

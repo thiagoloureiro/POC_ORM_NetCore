@@ -22,7 +22,7 @@ namespace Data.Base
                 {
                     myConn.Open();
 
-                    var strCreate = $"USE MASTER IF NOT EXISTS (SELECT name FROM master.sys.databases WHERE name = N'{database}')  CREATE DATABASE {database}";
+                    var strCreate = $"USE MASTER IF EXISTS (SELECT name FROM master.sys.databases WHERE name = N'{database}') DROP DATABASE {database} CREATE DATABASE {database}";
 
                     using (var myCommand = new SqlCommand(strCreate, myConn))
                     {
@@ -75,7 +75,6 @@ namespace Data.Base
                     dt.Columns.Add("registered", typeof(string));
                     dt.Columns.Add("latitude", typeof(double));
                     dt.Columns.Add("longitude", typeof(double));
-                    dt.Columns.Add("tags", typeof(string));
                     dt.Columns.Add("greeting", typeof(string));
                     dt.Columns.Add("favoriteFruit", typeof(string));
 
@@ -84,7 +83,7 @@ namespace Data.Base
                         dt.Rows.Add(item._id, item.index, item.guid, item.isActive, item.balance, item.picture,
                             item.age, item.eyeColor, item.name, item.gender, item.company, item.email, item.phone,
                             item.address,
-                            item.about, item.registered, item.latitude, item.longitude, String.Join(",", item.tags), item.greeting,
+                            item.about, item.registered, item.latitude, item.longitude, item.greeting,
                             item.favoriteFruit);
                     }
 

@@ -32,8 +32,6 @@ namespace POC_ORM_NetCore
 
             Console.WriteLine("NHibernate");
             StartTestNHibernate();
-
-            Console.ReadKey();
         }
 
         private static void StartTestDapper()
@@ -45,7 +43,7 @@ namespace POC_ORM_NetCore
 
             _results = new List<long>();
 
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 20; i++)
             {
                 sw.Start();
                 var ret = objDapper.GetAllPerson();
@@ -67,7 +65,7 @@ namespace POC_ORM_NetCore
 
             _results = new List<long>();
 
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 20; i++)
             {
                 sw.Start();
                 var ret = objAdo.GetAllPerson();
@@ -92,7 +90,7 @@ namespace POC_ORM_NetCore
                 context.Person.FirstOrDefault();
             }
 
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 20; i++)
             {
                 sw.Start();
 
@@ -115,7 +113,7 @@ namespace POC_ORM_NetCore
 
             _results = new List<long>();
 
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 20; i++)
             {
                 sw.Start();
                 var ret = objNh.GetAllPerson();

@@ -1,39 +1,28 @@
-﻿using Data.Base;
+﻿using System.Collections.Generic;
+using Data.Base;
+using FluentNHibernate.Cfg;
+using FluentNHibernate.Cfg.Db;
 using Model;
-using NHibernate.Cfg;
-using NHibernate.Dialect;
-using NHibernate.Driver;
-using System.Collections.Generic;
-using System.Reflection;
+using System.Linq;
 
 namespace Data.NHibernate
 {
     public class PersonRepository : BaseRepository
     {
-        public Person[] GetAllPerson()
+        public List<Person> GetAllPerson()
         {
-            var cfg = new Configuration();
-            cfg.DataBaseIntegration(x =>
-            {
-                x.ConnectionString = Connstring;
-                x.Driver<SqlClientDriver>();
-                x.Dialect<MsSql2008Dialect>();
-            });
-            cfg.AddAssembly(Assembly.GetExecutingAssembly());
-            var sefact = cfg.BuildSessionFactory();
+            var connStr = ConnstringDbPoc;
+            var sessionFactory = Fluently.Configure()
+                .Database(MsSqlConfiguration.MsSql2012.ConnectionString(connStr))
+                .Mappings(m => m.FluentMappings.AddFromAssemblyOf<Person>())
+                .BuildSessionFactory();
 
-            IList<Person> Person;
-
-            using (var session = sefact.OpenSession())
+            using (var session = sessionFactory.OpenSession())
             {
-                using (var tx = session.BeginTransaction())
-                {
-                    Person = session.CreateCriteria<Person>().List<Person>();
-                    tx.Commit();
-                }
+                var person = session.CreateCriteria(typeof(Person)).List<Person>();
+
+                return person.ToList();
             }
-            object[] array = new object[Person.Count];
-            return (Person[])array;
         }
     }
 }
