@@ -6,9 +6,8 @@ namespace Model
     public class Person
     {
         [Key]
-        public virtual string _id { get; set; }
+        public virtual long _id { get; set; }
 
-        public virtual int index { get; set; }
         public virtual Guid guid { get; set; }
         public virtual bool isActive { get; set; }
         public virtual string balance { get; set; }

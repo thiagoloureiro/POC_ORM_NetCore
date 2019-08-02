@@ -1,4 +1,5 @@
-﻿using System.Data.SqlClient;
+﻿using System;
+using System.Data.SqlClient;
 using Model;
 
 namespace Data.ADO
@@ -9,7 +10,7 @@ namespace Data.ADO
         {
             return new Person
             {
-                _id = reader.IsDBNull(0) ? null : reader.GetString(0),
+                _id = Convert.ToInt64(reader.IsDBNull(0) ? null : reader.GetString(0)),
                 name = reader.IsDBNull(1) ? null : reader.GetString(1)
             };
         }

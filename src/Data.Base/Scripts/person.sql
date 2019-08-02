@@ -7,9 +7,7 @@ IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='Person')
 BEGIN
 	CREATE TABLE [POCDb].[dbo].[Person]
 	(
-	_id VARCHAR(100),
-	[index] INT IDENTITY(1,1) NOT NULL,
-
+	_id bigint IDENTITY(1,1) NOT NULL,
 	[guid]                      uniqueidentifier,
 	isActive bit,
 	balance                     VARCHAR(100),
@@ -35,3 +33,22 @@ BEGIN
 )
 	)ON[PRIMARY]
 END
+
+--IF EXISTS (SELECT * FROM sysobjects WHERE name='dummyrecord')
+--BEGIN
+--	DROP TABLE [POCDb].[dbo].[dummyrecord]
+--END
+
+
+CREATE TABLE [POCDb].[dbo].[dummyrecord]
+(
+    id bigint NOT NULL,
+    revisionnumber integer NOT NULL,
+	index2 bigint,
+    owner bigint,
+    element bigint,
+    externalrecorddatetime datetime2,
+    externalrecorddatetime2 datetime2,
+    externalrecorddatetime3 datetime2,
+    externalrecorddatetime4 datetime2,
+    externalrecorddatetime5 datetime2)

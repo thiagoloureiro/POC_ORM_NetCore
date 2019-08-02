@@ -6,6 +6,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="FakeItEasy" Version="5.1.1" />
+    <PackageReference Include="MI.Persistence" Version="1.0.0" />
+    <PackageReference Include="RandomTestValues" Version="2.0.5.1" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Data.ADO\Data.ADO.csproj" />
     <ProjectReference Include="..\Data.Base\Data.Base.csproj" />
     <ProjectReference Include="..\Data.Dapper\Data.Dapper.csproj" />

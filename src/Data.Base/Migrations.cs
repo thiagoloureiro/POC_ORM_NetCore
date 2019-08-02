@@ -35,7 +35,7 @@ namespace Data.Base
                     }
                 }
 
-                InsertData();
+                //   InsertData();
             }
             catch (Exception e)
             {
@@ -57,8 +57,7 @@ namespace Data.Base
                 using (var copy = new SqlBulkCopy(connection))
                 {
                     var dt = new DataTable("Person");
-                    dt.Columns.Add("_id", typeof(string));
-                    dt.Columns.Add("index", typeof(int));
+                    dt.Columns.Add("_id", typeof(long));
                     dt.Columns.Add("guid", typeof(Guid));
                     dt.Columns.Add("isActive", typeof(bool));
                     dt.Columns.Add("balance", typeof(string));
@@ -80,7 +79,7 @@ namespace Data.Base
 
                     foreach (var item in objPerson)
                     {
-                        dt.Rows.Add(item._id, item.index, item.guid, item.isActive, item.balance, item.picture,
+                        dt.Rows.Add(item._id, item.guid, item.isActive, item.balance, item.picture,
                             item.age, item.eyeColor, item.name, item.gender, item.company, item.email, item.phone,
                             item.address,
                             item.about, item.registered, item.latitude, item.longitude, item.greeting,
