@@ -20,13 +20,11 @@ namespace Data.Dapper
 
         public Person[] GetAllPerson()
         {
-            List<Person> ret;
             using (var con = new SqlConnection(ConnstringDbPoc))
             {
                 var sql = @"select * from Person";
-                ret = con.Query<Person>(sql).ToList();
+                return con.Query<Person>(sql).ToArray();
             }
-            return ret.ToArray();
         }
     }
 }
