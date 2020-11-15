@@ -10,4 +10,4 @@ Repository with Examples and Performance tests with .NET 5 and EntityFramework C
 - EntityFramework Core 5.0.0
 - NHibernate 5.3.4
 
-
+![Results](https://raw.githubusercontent.com/thiagoloureiro/POC_ORM_NetCore/master/Capturar.PNG)
