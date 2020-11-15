@@ -5,7 +5,7 @@
 
 Repository with Examples and Performance tests with .NET 5 and EntityFramework Core, Dapper, NHibernate.
 
-To run just clone the repo and execute **docker-compose** up command
+To run just clone the repo and execute **docker-compose up** command (you need Docker installed)
 
 ## Versions Used:
 - Dapper 2.0.35
