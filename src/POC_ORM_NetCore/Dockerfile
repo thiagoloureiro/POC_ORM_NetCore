@@ -1,7 +1,7 @@
-FROM mcr.microsoft.com/dotnet/core/runtime:2.2-stretch-slim AS base
+FROM mcr.microsoft.com/dotnet/runtime:5.0-buster-slim AS base
 WORKDIR /app
 
-FROM mcr.microsoft.com/dotnet/core/sdk:2.2-stretch AS build
+FROM mcr.microsoft.com/dotnet/sdk:5.0-buster-slim AS build
 WORKDIR /src
 COPY ["src/POC_ORM_NetCore/POC_ORM_NetCore.csproj", "src/POC_ORM_NetCore/"]
 COPY ["src/Model/Model.csproj", "src/Model/"]
