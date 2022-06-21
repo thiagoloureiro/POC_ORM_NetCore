@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.IO;
+using System.Threading.Tasks;
 using Model;
 using Newtonsoft.Json;
 
@@ -10,7 +11,7 @@ namespace Data.Base
 {
     public class Migrations : BaseRepository
     {
-        public void CreateTables()
+        public async Task CreateTablesAsync()
         {
             try
             {
@@ -35,7 +36,7 @@ namespace Data.Base
                     }
                 }
 
-                InsertData();
+                await InsertDataAsync();
             }
             catch (Exception e)
             {
@@ -44,9 +45,9 @@ namespace Data.Base
             }
         }
 
-        public void InsertData()
+        public async Task InsertDataAsync()
         {
-            var strData = ReadData();
+            var strData = await ReadDataAsync();
 
             var objPerson = JsonConvert.DeserializeObject<List<Person>>(strData);
 
@@ -106,9 +107,9 @@ namespace Data.Base
             }
         }
 
-        public string ReadData()
+        public async Task<string> ReadDataAsync()
         {
-            string data = File.ReadAllText(AppDomain.CurrentDomain.BaseDirectory + "/Data/jsondata.json");
+            string data = await File.ReadAllTextAsync(AppDomain.CurrentDomain.BaseDirectory + "/Data/jsondata.json");
             return data;
         }
     }

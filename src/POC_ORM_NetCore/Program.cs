@@ -1,9 +1,11 @@
-﻿using Data.EntityFramework;
+﻿using Data.Base;
+using Data.EntityFramework;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using Data.Base;
+using System.Threading.Tasks;
 
 namespace POC_ORM_NetCore
 {
@@ -12,41 +14,41 @@ namespace POC_ORM_NetCore
         private static List<long> _results;
         private static Stopwatch sw;
 
-        private static void Main(string[] args)
+        private static async Task Main(string[] args)
         {
             Console.WriteLine("Creating Database");
-            new Migrations().CreateTables();
+            await new Migrations().CreateTablesAsync();
 
             Console.WriteLine("Initializing Tests");
             Console.WriteLine("Test Number 1: SELECT * FROM Person");
             Console.WriteLine("-------------------------------------");
 
             Console.WriteLine("Dapper");
-            StartTestDapper();
+            await StartTestDapperAsync();
 
             //Console.WriteLine("ADO");s
             //StartTestAdo();
 
             Console.WriteLine("EntityFramework");
-            StartTestEf();
+            await StartTestEfAsync();
 
             Console.WriteLine("NHibernate");
-            StartTestNHibernate();
+            await StartTestNHibernateAsync();
         }
 
-        private static void StartTestDapper()
+        private static async Task StartTestDapperAsync()
         {
             var objDapper = new Data.Dapper.PersonRepository();
             sw = new Stopwatch();
 
-            objDapper.WarmUp();
+            await objDapper.WarmUpAsync();
 
             _results = new List<long>();
 
             for (int i = 0; i < 20; i++)
             {
                 sw.Start();
-                var ret = objDapper.GetAllPerson();
+                var ret = objDapper.GetAllPersonAsync();
                 sw.Stop();
                 _results.Add(sw.ElapsedMilliseconds);
                 Console.WriteLine(sw.ElapsedMilliseconds + "ms");
@@ -56,19 +58,19 @@ namespace POC_ORM_NetCore
             Console.WriteLine($"Average: {_results.Average()}");
         }
 
-        private static void StartTestAdo()
+        private static async Task StartTestAdoAsync()
         {
             var objAdo = new Data.ADO.PersonRepository();
             sw = new Stopwatch();
 
-            objAdo.WarmUp();
+            await objAdo.WarmUpAsync();
 
             _results = new List<long>();
 
             for (int i = 0; i < 20; i++)
             {
                 sw.Start();
-                var ret = objAdo.GetAllPerson();
+                var ret = await objAdo.GetAllPersonAsync();
                 sw.Stop();
                 _results.Add(sw.ElapsedMilliseconds);
                 Console.WriteLine(sw.ElapsedMilliseconds + "ms");
@@ -77,7 +79,7 @@ namespace POC_ORM_NetCore
             Console.WriteLine($"Average: {_results.Average()}");
         }
 
-        private static void StartTestEf()
+        private static async Task StartTestEfAsync()
         {
             sw = new Stopwatch();
 
@@ -87,7 +89,7 @@ namespace POC_ORM_NetCore
 
             using (var context = new DataContext())
             {
-                context.Person.FirstOrDefault();
+                var x = await context.Person.FirstOrDefaultAsync();
             }
 
             for (int i = 0; i < 20; i++)
@@ -96,7 +98,7 @@ namespace POC_ORM_NetCore
 
                 using (var context = new DataContext())
                 {
-                    var ret = context.Person.ToArray();
+                    var ret = await context.Person.ToArrayAsync();
                     sw.Stop();
                     _results.Add(sw.ElapsedMilliseconds);
                     Console.WriteLine(sw.ElapsedMilliseconds + "ms");
@@ -106,7 +108,7 @@ namespace POC_ORM_NetCore
             Console.WriteLine($"Average: {_results.Average()}");
         }
 
-        private static void StartTestNHibernate()
+        private static async Task StartTestNHibernateAsync()
         {
             var objNh = new Data.NHibernate.PersonRepository();
             sw = new Stopwatch();
@@ -116,7 +118,7 @@ namespace POC_ORM_NetCore
             for (int i = 0; i < 20; i++)
             {
                 sw.Start();
-                var ret = objNh.GetAllPerson();
+                var ret = await objNh.GetAllPersonAsync();
                 sw.Stop();
                 _results.Add(sw.ElapsedMilliseconds);
                 Console.WriteLine(sw.ElapsedMilliseconds + "ms");

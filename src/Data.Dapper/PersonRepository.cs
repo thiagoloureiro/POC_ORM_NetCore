@@ -4,26 +4,28 @@ using Model;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace Data.Dapper
 {
     public class PersonRepository : BaseRepository
     {
-        public void WarmUp()
+        public async Task WarmUpAsync()
         {
             using (var con = new SqlConnection(ConnstringDbPoc))
             {
                 var sql = @"select TOP 1 * from Person";
-                con.Query<Person>(sql).ToList();
+                var ret = await con.QueryAsync<Person>(sql);
             }
         }
 
-        public Person[] GetAllPerson()
+        public async Task<Person[]> GetAllPersonAsync()
         {
             using (var con = new SqlConnection(ConnstringDbPoc))
             {
                 var sql = @"select * from Person";
-                return con.Query<Person>(sql).ToArray();
+                var ret = await con.QueryAsync<Person>(sql);
+                return ret.ToArray();
             }
         }
     }

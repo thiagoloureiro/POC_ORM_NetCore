@@ -1,12 +1,13 @@
 ﻿using Data.Base;
 using Model;
 using System.Data.SqlClient;
+using System.Threading.Tasks;
 
 namespace Data.ADO
 {
     public class PersonRepository : BaseRepository
     {
-        public void WarmUp()
+        public async Task WarmUpAsync()
         {
             var mapper = new PersonMapper();
             using (var con = new SqlConnection(ConnstringDbPoc))
@@ -18,11 +19,11 @@ namespace Data.ADO
                     Connection = con
                 };
 
-                mapper.ReadMultiple(command);
+                await mapper.ReadMultipleAsync(command);
             }
         }
 
-        public Person[] GetAllPerson()
+        public async Task<Person[]> GetAllPersonAsync()
         {
             var mapper = new PersonMapper();
             using (var con = new SqlConnection(ConnstringDbPoc))
@@ -33,7 +34,7 @@ namespace Data.ADO
                     CommandText = @"select * from Person",
                     Connection = con
                 };
-                return mapper.ReadMultiple(command);
+                return await mapper.ReadMultipleAsync(command);
             }
         }
     }

@@ -4,12 +4,13 @@ using FluentNHibernate.Cfg;
 using FluentNHibernate.Cfg.Db;
 using Model;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace Data.NHibernate
 {
     public class PersonRepository : BaseRepository
     {
-        public List<Person> GetAllPerson()
+        public async Task<List<Person>> GetAllPersonAsync()
         {
             var connStr = ConnstringDbPoc;
             var sessionFactory = Fluently.Configure()
@@ -19,7 +20,7 @@ namespace Data.NHibernate
 
             using (var session = sessionFactory.OpenSession())
             {
-                var person = session.CreateCriteria(typeof(Person)).List<Person>();
+                var person = await session.CreateCriteria(typeof(Person)).ListAsync<Person>();
 
                 return person.ToList();
             }

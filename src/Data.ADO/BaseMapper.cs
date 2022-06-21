@@ -1,14 +1,15 @@
 ﻿using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Threading.Tasks;
 
 namespace Data.ADO
 {
     internal abstract class BaseMapper<TType>
     {
-        internal TType[] ReadMultiple(SqlCommand command)
+        internal async Task<TType[]> ReadMultipleAsync(SqlCommand command)
         {
             var ret = new List<TType>();
-            using (var reader = command.ExecuteReader())
+            using (var reader = await command.ExecuteReaderAsync())
             {
                 while (reader.Read())
                 {
@@ -20,10 +21,10 @@ namespace Data.ADO
             return ret.ToArray();
         }
 
-        internal TType ReadSingle(SqlCommand command)
+        internal async Task<TType> ReadSingleAsync(SqlCommand command)
         {
             TType ret = default(TType);
-            using (var reader = command.ExecuteReader())
+            using (var reader = await command.ExecuteReaderAsync())
             {
                 if (reader.Read())
                 {
