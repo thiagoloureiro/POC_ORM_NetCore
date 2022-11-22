@@ -14,6 +14,8 @@ COPY ["src/Data.NHibernate/Data.NHibernate.csproj", "src/Data.NHibernate/"]
 COPY ["src/Data.Dapper/Data.Dapper.csproj", "src/Data.Dapper/"]
 RUN dotnet restore "src/POC_ORM_NetCore/POC_ORM_NetCore.csproj"
 COPY . .
+COPY wait-for-it.sh wait-for-it.sh 
+RUN chmod +x wait-for-it.sh
 WORKDIR "/src/src/POC_ORM_NetCore"
 RUN dotnet build "POC_ORM_NetCore.csproj" -c Release -o /app/build
 
@@ -23,4 +25,6 @@ RUN dotnet publish "POC_ORM_NetCore.csproj" -c Release -o /app/publish
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
+COPY wait-for-it.sh /wait-for-it.sh 
+RUN chmod +x /wait-for-it.sh
 ENTRYPOINT ["dotnet", "POC_ORM_NetCore.dll"]
