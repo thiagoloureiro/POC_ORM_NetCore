@@ -48,10 +48,10 @@ namespace POC_ORM_NetCore
             for (int i = 0; i < 20; i++)
             {
                 sw.Start();
-                var ret = objDapper.GetAllPersonAsync();
+                var ret = await objDapper.GetAllPersonAsync();
                 sw.Stop();
                 _results.Add(sw.ElapsedMilliseconds);
-                Console.WriteLine(sw.ElapsedMilliseconds + "ms");
+                Console.WriteLine($"{sw.ElapsedMilliseconds} ms Records: {ret.Length}");
                 sw.Reset();
             }
 
