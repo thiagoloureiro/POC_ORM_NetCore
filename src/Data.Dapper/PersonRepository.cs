@@ -12,7 +12,7 @@ namespace Data.Dapper
     {
         public async Task WarmUpAsync()
         {
-            using (var con = new SqlConnection(ConnstringDbPoc))
+            await using (var con = new SqlConnection(ConnstringDbPoc))
             {
                 var sql = @"select TOP 1 * from Person";
                 var ret = await con.QueryAsync<Person>(sql);
@@ -21,7 +21,7 @@ namespace Data.Dapper
 
         public async Task<Person[]> GetAllPersonAsync()
         {
-            using (var con = new SqlConnection(ConnstringDbPoc))
+            await using (var con = new SqlConnection(ConnstringDbPoc))
             {
                 var sql = @"select * from Person";
                 var ret = await con.QueryAsync<Person>(sql);

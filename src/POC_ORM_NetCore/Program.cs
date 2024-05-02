@@ -45,7 +45,7 @@ namespace POC_ORM_NetCore
 
             _results = new List<long>();
 
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < 100; i++)
             {
                 sw.Start();
                 var ret = await objDapper.GetAllPersonAsync();
@@ -67,7 +67,7 @@ namespace POC_ORM_NetCore
 
             _results = new List<long>();
 
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < 100; i++)
             {
                 sw.Start();
                 var ret = await objAdo.GetAllPersonAsync();
@@ -87,16 +87,16 @@ namespace POC_ORM_NetCore
 
             //WarmUp
 
-            using (var context = new DataContext())
+            await using (var context = new DataContext())
             {
                 var x = await context.Person.FirstOrDefaultAsync();
             }
 
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < 100; i++)
             {
                 sw.Start();
 
-                using (var context = new DataContext())
+                await using (var context = new DataContext())
                 {
                     var ret = await context.Person.ToArrayAsync();
                     sw.Stop();
@@ -115,7 +115,7 @@ namespace POC_ORM_NetCore
 
             _results = new List<long>();
 
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < 100; i++)
             {
                 sw.Start();
                 var ret = await objNh.GetAllPersonAsync();
