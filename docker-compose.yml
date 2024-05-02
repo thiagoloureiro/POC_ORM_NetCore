@@ -1,5 +1,3 @@
-version: '3.4'
-
 services:
   poc_orm_netcore:
     image: ${DOCKER_REGISTRY-}pocormnetcore
